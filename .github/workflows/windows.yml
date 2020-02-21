@@ -1,0 +1,11 @@
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Install module with optional dependency
+      run: |
+        echo @jcansdale-test:registry=https://npm.pkg.github.com > .npmrc
+        echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > ~/.npmrc
+        npm install @jcansdale-test/npm-fails@1.0.0 --verbose
