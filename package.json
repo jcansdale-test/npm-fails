@@ -1,5 +1,5 @@
 {
-  "name": "@vince1995/npm-fails",
+  "name": "@jcansdale-test/npm-fails",
   "version": "1.0.0",
   "main": "src/index",
   "dependencies": {
@@ -17,6 +17,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/vince1995/npm-fails.git"
+    "url": "git://github.com/jcansdale-test/npm-fails.git"
   }
 }
