@@ -9,5 +9,5 @@ jobs:
     - name: Install module with optional dependency
       run: |
         echo @jcansdale-test:registry=https://npm.pkg.github.com > .npmrc
-        npm login --registry=https://npm.pkg.github.com -u token -p ${{ secrets.GITHUB_TOKEN }}
+        echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > ~/.npmrc
         npm install @jcansdale-test/npm-fails@1.0.0 --verbose
