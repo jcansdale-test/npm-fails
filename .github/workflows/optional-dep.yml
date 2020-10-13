@@ -14,3 +14,4 @@ jobs:
         echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > ~/.npmrc
         npm install @jcansdale-test/npm-fails@1.0.0 --verbose
 
+
