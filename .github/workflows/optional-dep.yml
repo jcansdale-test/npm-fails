@@ -1,7 +1,21 @@
 on: [push, workflow_dispatch]
 
 jobs:
-  build:
+  publish:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+    - name: Publish module with optional dependency
+      run: |
+        echo @jcansdale-test:registry=https://npm.pkg.github.com > .npmrc
+        echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > ~/.npmrc
+        npm publish
+
+  install:
+    needs: [publish]
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
