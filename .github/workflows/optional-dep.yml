@@ -1,5 +1,8 @@
 on: [push, workflow_dispatch]
 
+env:
+  VERSION: 1.0.1-${{ github.sha }}
+
 jobs:
   publish:
     runs-on: ${{ matrix.os }}
@@ -9,6 +12,9 @@ jobs:
         os: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
+
+    - run: npm version ${{ env.VERSION }} --no-git-tag-version
+
     - name: Publish module with optional dependency
       run: |
         echo @jcansdale-test:registry=https://npm.pkg.github.com > .npmrc
@@ -27,6 +33,4 @@ jobs:
       run: |
         echo @jcansdale-test:registry=https://npm.pkg.github.com > .npmrc
         echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > ~/.npmrc
-        npm install @jcansdale-test/npm-fails@1.0.0 --verbose
-
-
+        npm install @jcansdale-test/npm-fails@${{ env.VERSION }} --verbose
