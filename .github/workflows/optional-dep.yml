@@ -8,6 +8,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
     steps:
+    - uses: actions/checkout@v2
     - name: Publish module with optional dependency
       run: |
         echo @jcansdale-test:registry=https://npm.pkg.github.com > .npmrc
